@@ -1,4 +1,4 @@
-#Запуск
+# Запуск
 Приложение построено на основе Spring Boot.
 
 Для запуска данного приложения необходимо выполнить подключение в базе данных указав название подключения и данные 
@@ -13,7 +13,7 @@
 Все написаное API возвращает и принимает json файлы.
 Модель данных была построена при помощи Spring Data
 
-##Admin Quiz Controller
+## Admin Quiz Controller
 ### GET /admin/quiz/{quizId}
 
 Получение опроса по id
@@ -31,26 +31,26 @@
 
 Удаление опроса
 
-##Admin Question Controller
-###Get admin/{quizId}/question
+## Admin Question Controller
+### Get admin/{quizId}/question
 
 Получение всех вопросов относящихся к опросу с id = quizId
 
-###POST admin/{quizId}/question
+### POST admin/{quizId}/question
 
 Создание нового вопроса в опросе с id = quizId
 
-###PUT admin/{quizId}/question
+### PUT admin/{quizId}/question
 
 Обновление вопроса в данном опросе
 
-###DELETE admin/{quizId}/question
+### DELETE admin/{quizId}/question
 
 Удаление вопроса
 
 
-##User Controller
-###GET user/allQuiz
+## User Controller
+### GET user/allQuiz
 
 Получение всех активных опросов на данный момент времени
 
