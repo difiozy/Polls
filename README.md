@@ -19,15 +19,15 @@
 Получение опроса по id
 
 
-#### POST /admin/quiz
+### POST /admin/quiz
 
 Создание опроса
 
-#### PUT /admin/quiz
+### PUT /admin/quiz
 
 Обновление опроса
 
-#### DELETE /admin/quiz
+### DELETE /admin/quiz
 
 Удаление опроса
 
@@ -36,48 +36,48 @@
 
 Получение всех вопросов относящихся к опросу с id = quizId
 
-####POST admin/{quizId}/question
+###POST admin/{quizId}/question
 
 Создание нового вопроса в опросе с id = quizId
 
-####PUT admin/{quizId}/question
+###PUT admin/{quizId}/question
 
 Обновление вопроса в данном опросе
 
-####DELETE admin/{quizId}/question
+###DELETE admin/{quizId}/question
 
 Удаление вопроса
 
 
 ##User Controller
-####GET user/allQuiz
+###GET user/allQuiz
 
 Получение всех активных опросов на данный момент времени
 
-#### GET user/vote/{quizId}
+### GET user/vote/{quizId}
 
 Получение опроса с id = quizId
 
-#### GET user/vote/question/{questionId}
+### GET user/vote/question/{questionId}
 
 Получение вопроса по id
 
-#### GET user/vote/question/{questionId}/answers
+### GET user/vote/question/{questionId}/answers
 
 Получение всех ответов на вопрос
 
-#### POST user//vote/question/{questionId}/type=text
+### POST user//vote/question/{questionId}/type=text
 
 Создать ответ на вопрос в тектовом формате
 
-#### POST user/vote/question/type=enumeration
+### POST user/vote/question/type=enumeration
 
 Создать ответ на вопрос выбрать один или несколько вариантов ответов
 
-#### GET user/{userId}/textAns
+### GET user/{userId}/textAns
 
 Получить все текстовые ответы данного пользователя
 
-#### GET user/{userId}/chooseAns
+### GET user/{userId}/chooseAns
 
 Получить все ответы пользователя с вариантами ответов
