@@ -1,5 +1,6 @@
 package com.shurov.polls.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,21 +18,22 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     @Max(150)
     String name;
 
-    @Column(name = "dateStart")
+    @Column(name = "dateStart", nullable = false)
     Date dateStart;
 
-    @Column(name = "dateEnd")
+    @Column(name = "dateEnd", nullable = true)
     Date dateEnd;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     @Max(500)
     String description;
 
     @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Question> questions;
 
 }

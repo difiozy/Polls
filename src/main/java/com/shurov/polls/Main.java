@@ -1,4 +1,4 @@
-package com.shurov.polls.controller;
+package com.shurov.polls;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

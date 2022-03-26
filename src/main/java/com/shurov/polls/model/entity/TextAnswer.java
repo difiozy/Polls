@@ -1,5 +1,6 @@
 package com.shurov.polls.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,12 +15,14 @@ public class TextAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "userId")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId",nullable = true)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private User user;
 
-    @JoinColumn(name = "questionId")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Question question;
 
     @Column(name = "textAnswer")

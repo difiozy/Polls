@@ -1,5 +1,7 @@
 package com.shurov.polls.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,13 +17,15 @@ public class AnswerInQuestion{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @JoinColumn(name = "questionid")
+    @JoinColumn(name = "questionid",nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Question question;
 
-    @Column(name = "textAnswer")
+    @Column(name = "textAnswer",nullable = false)
     String textAnswer;
 
     @OneToMany(mappedBy = "answerInQuestion", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<ChooseAnswers> chooseAnswers;
 }
