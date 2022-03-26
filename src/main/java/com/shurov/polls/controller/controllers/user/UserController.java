@@ -23,12 +23,11 @@ public class UserController {
 
     @GetMapping(value = "/allQuiz", produces = "application/json")
     public List<Quiz> getAllActiveQuiz() {
-        List<Quiz> quizzes = quizRepository
+        return quizRepository
                 .findQuizzesByDateEndIsNullOrDateEndGreaterThan(new Date(System.currentTimeMillis()));
-        return quizzes;
     }
 
-    @GetMapping(value = "/vote/{quizId}")
+    @GetMapping(value = "/vote/{quizId}", produces = "application/json")
     public Quiz getQuiz(@PathVariable Long quizId) {
         Quiz quiz = quizRepository.getById(quizId);
         quiz.getQuestions();
@@ -52,7 +51,7 @@ public class UserController {
         return answerInQuestionRepository.findAnswerInQuestionsByQuestionEquals(question);
     }
 
-    @PostMapping(value = "/vote/question/{questionId}/type=text", produces = "application/json")
+    @PostMapping(value = "/vote/question/{questionId}/type=text", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Void> createVoteText( @PathVariable Long questionId,
                                                @RequestBody String text, @RequestParam Long userId) {
 
@@ -71,7 +70,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/vote/question/type=enumeration", produces = "application/json")
+    @PostMapping(value = "/vote/question/type=enumeration", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Void> createVoteNum(@RequestBody List<AnswerInQuestion> answerInQuestions, @RequestParam Long userId) {
         try {
             for (AnswerInQuestion answer : answerInQuestions) {
@@ -93,14 +92,12 @@ public class UserController {
 
     @GetMapping(value = "/{userId}/textAns", produces = "application/json")
     public List<TextAnswer> getUsersTextAnswer(@PathVariable Long userId) {
-        List<TextAnswer> textAnswers = userRepository.getById(userId).getTextAnswers();
-        return textAnswers;
+        return userRepository.getById(userId).getTextAnswers();
 
     }
     @GetMapping(value = "/{userId}/chooseAns", produces = "application/json")
     public List<ChooseAnswers> getUsersChooseAnswer(@PathVariable Long userId) {
-        List<ChooseAnswers> chooseAnswers = userRepository.getById(userId).getChooseAnswers();
-        return chooseAnswers;
+        return userRepository.getById(userId).getChooseAnswers();
     }
 
 }

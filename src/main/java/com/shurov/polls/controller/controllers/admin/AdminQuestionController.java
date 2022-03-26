@@ -18,7 +18,7 @@ public class AdminQuestionController {
     private final QuizRepository quizRepository;
     private final QuestionRepository questionRepository;
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public List<Question> getQuestions(@PathVariable Long quizId) {
         try {
             return quizRepository.getById(quizId).getQuestions();
@@ -27,7 +27,7 @@ public class AdminQuestionController {
         }
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public ResponseEntity<Void> addQuestion(@PathVariable Long quizId, @RequestBody Question question) {
         Optional<Quiz> quiz = quizRepository.findById(quizId);
         if (quiz.isPresent()) {
@@ -37,7 +37,7 @@ public class AdminQuestionController {
         return ResponseEntity.badRequest().build();
     }
 
-    @PutMapping
+    @PutMapping(consumes = "application/json")
     public ResponseEntity<Question> updateQuestion(@PathVariable Long quizId, @RequestBody Question question) {
         try {
             if (quizRepository.findById(quizId).isEmpty()){
@@ -52,7 +52,7 @@ public class AdminQuestionController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping(consumes = "application/json")
     public ResponseEntity<Void> deleteQuestion(@RequestBody Question question, @PathVariable Long quizId){
         try
         {

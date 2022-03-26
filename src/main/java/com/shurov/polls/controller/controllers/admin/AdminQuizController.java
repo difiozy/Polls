@@ -13,12 +13,12 @@ import java.util.Date;
 @AllArgsConstructor
 public class AdminQuizController {
     private final QuizRepository quizRepository;
-    @GetMapping("/{quizId}")
+    @GetMapping(value = "/{quizId}", produces = "application/json")
     public Quiz getQuiz(@PathVariable Long quizId) {
         return quizRepository.getById(quizId);
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public ResponseEntity<Void> createQuiz(@RequestBody Quiz quiz) {
         try {
             quiz.setDateStart(new Date(System.currentTimeMillis()));
@@ -29,7 +29,7 @@ public class AdminQuizController {
         }
     }
 
-    @PutMapping
+    @PutMapping(consumes = "application/json")
     public ResponseEntity<Quiz> updateQuiz(@RequestBody Quiz quiz) {
         try {
             Quiz quiz1 = quizRepository.getById(quiz.getId());
@@ -42,7 +42,7 @@ public class AdminQuizController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping(consumes = "application/json")
     public ResponseEntity<Void> deleteQuiz(@RequestBody Quiz quiz) {
 
         try {
